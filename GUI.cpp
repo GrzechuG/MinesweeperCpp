@@ -27,7 +27,6 @@ GUI::GUI(MinesweeperBoard mainBoard)
             GUIField s(fieldWidth, x, y,'#');
             s.Update(mainBoard);
 
-
             fields.push_back(s);
         }
     }
@@ -101,19 +100,33 @@ GUI::GUI(MinesweeperBoard mainBoard)
                 window.draw(sprite);
             }
             window.display();
-            usleep(100);
+            mainBoard.hasWon();
+            usleep(10000);
         }else{
+
 
             sf::Font font;
             font.loadFromFile("/home/samsepiol/CLionProjects/Minesweeper_Project/arial.ttf");
-            sf::Text text("Game Over!", font);
+
+            sf::Color textColor;
+            std::string str;
+            if(mainBoard.hasWon()){
+
+                textColor = sf::Color::Green;
+                str = "Victory!";
+            }else {
+                textColor = sf::Color::Red;
+                str = "Game Over!";
+            }
+            sf::Text text(str, font);
+            text.setFillColor(textColor);
             text.setCharacterSize(30);
             text.setPosition(window.getSize().x/2, window.getSize().y/2);
-            text.setStyle(sf::Text::Bold);
-            text.setFillColor(sf::Color::Red);
+
 // Draw it
             window.draw(text);
             window.display();
+            usleep(10000);
         }
     }
 
@@ -126,20 +139,20 @@ sf::Image GUI::loadTexture(char state) {
     sf::Image icon;
     switch (state) {
         case ' ':
-            icon.loadFromFile("/home/samsepiol/CLionProjects/Minesweeper_Project/icons/0.png");
+            icon.loadFromFile("./icons/0.png");
             break;
         case 'x':
-            icon.loadFromFile("/home/samsepiol/CLionProjects/Minesweeper_Project/icons/bomb.png");
+            icon.loadFromFile("./icons/bomb.png");
             break;
         case '#':
-            icon.loadFromFile("/home/samsepiol/CLionProjects/Minesweeper_Project/icons/undiscovered.png");
+            icon.loadFromFile("./icons/undiscovered.png");
             break;
         case 'F':
-            icon.loadFromFile("/home/samsepiol/CLionProjects/Minesweeper_Project/icons/flag.png");
+            icon.loadFromFile("./icons/flag.png");
             break;
 
         default:
-            icon.loadFromFile(std::string("/home/samsepiol/CLionProjects/Minesweeper_Project/icons/")+state+std::string(".png"));//Todelete
+            icon.loadFromFile(std::string("./icons/")+state+std::string(".png"));//Todelete
     }
     return icon;
 

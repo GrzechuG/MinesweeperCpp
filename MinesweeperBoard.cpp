@@ -69,9 +69,11 @@ int MinesweeperBoard::countMines(int x, int y) const {
 
 void MinesweeperBoard::reveal(int x, int y){
 
+    if(!board[x][y].isRevealed)
     if(isCorrectField(x, y)){
 
         board[x][y].isRevealed = true;
+        unrevealedFields--;
         if(isMine(x, y)==1){
             if(firstClick){
 
@@ -102,10 +104,6 @@ bool MinesweeperBoard::isGameover() const {
     return gameOver;
 
 }
-
-
-
-
 
  MinesweeperBoard::MinesweeperBoard(int width, int height):width(width), height(height)
 {
@@ -144,8 +142,12 @@ void MinesweeperBoard::setFlag(int x, int y) {
 }
 
 void MinesweeperBoard::NewGame() {
+
+    unrevealedFields = height*width;
+
     for(int y = 0; y<height; y++){
         for(int x = 0; x<width; x++){
+
             board[x][y] = (Field){false, false, false};
 
         }
@@ -153,7 +155,7 @@ void MinesweeperBoard::NewGame() {
     }
 
     srand (time(NULL));
-    int minesToGenerate = (int)(0.2*width*height);
+    int minesToGenerate = (int)(0.02*width*height);
     for(int i = 0; i < minesToGenerate; i++){
 
         addNewMine();
@@ -198,4 +200,13 @@ void MinesweeperBoard::addNewMine() {
 
 void MinesweeperBoard::removeMine(int x, int y) {
     board[x][y].hasMine=false;
+}
+
+bool MinesweeperBoard::hasWon() {
+
+    if(unrevealedFields == minesCounter){
+        gameOver = true;
+        return true;
+    }
+    return false;
 }

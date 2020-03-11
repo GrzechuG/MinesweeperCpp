@@ -20,6 +20,7 @@ class MinesweeperBoard {
     bool gameOver;
     bool firstClick = true;
     int minesCounter = 0;
+    int unrevealedFields = 0;
 
     int isMine(int x, int y) const;
     bool isCorrectField(int x, int y) const;
@@ -40,6 +41,7 @@ public:
     void debug_display() const;
     void console_display() const;
     bool isGameover() const;
+    bool hasWon();
     bool isFlagged(int x, int y);
     void setFlag(int x, int y);
     std::vector <int> getSize() const;
