@@ -1,0 +1,3 @@
+/home/samsepiol/CLionProjects/Minesweeper_Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/samsepiol/CLionProjects/Minesweeper_Project/cmake-build-debug/CMakeFiles/Saper.dir
+/home/samsepiol/CLionProjects/Minesweeper_Project/cmake-build-debug/CMakeFiles/edit_cache.dir

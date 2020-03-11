@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/Saper.dir/main.cpp.o CMakeFiles/Saper.dir/MinesweeperBoard.cpp.o CMakeFiles/Saper.dir/GUI.cpp.o CMakeFiles/Saper.dir/GUIField.cpp.o  -o Saper /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1 

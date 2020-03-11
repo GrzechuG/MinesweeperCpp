@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/samsepiol/CLionProjects/Minesweeper_Project/MinesweeperBoard.cpp
+iostream
+-
+random
+-
+ctime
+-
+vector
+-
+MinesweeperBoard.h
+/home/samsepiol/CLionProjects/Minesweeper_Project/MinesweeperBoard.h
+
+/home/samsepiol/CLionProjects/Minesweeper_Project/MinesweeperBoard.h
+vector
+-
+
