@@ -7,7 +7,10 @@
 
 
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include "MinesweeperBoard.h"
+#include "GUIField.h"
 
 struct Icon{
     char type;
@@ -16,10 +19,12 @@ struct Icon{
 class GUI {
 
     MinesweeperBoard mainBoard;
-    sf::Image loadTexture(char state);
+    sf::RenderWindow window;
+    sf::Image loadTexture(char state) const;
     std::vector <Icon> textures;
     void preloadIcons();
-    sf::Image getImage(char state);
+    sf::Image getImage(char state) const;
+
 
 
 

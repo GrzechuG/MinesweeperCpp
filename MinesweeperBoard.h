@@ -26,7 +26,8 @@ class MinesweeperBoard {
     bool isCorrectField(int x, int y) const;
     void addNewMine();
     void removeMine(int x, int y);
-
+    int countMines(int x, int y) const;
+    void revealAllMines();
 
 
 
@@ -37,7 +38,7 @@ public:
     MinesweeperBoard(int width, int height);
     void NewGame();
     void reveal(int x, int y );
-    int countMines(int x, int y) const;
+
     void debug_display() const;
     void console_display() const;
     bool isGameover() const;
@@ -45,6 +46,7 @@ public:
     bool isFlagged(int x, int y);
     void setFlag(int x, int y);
     std::vector <int> getSize() const;
+
 
 
 

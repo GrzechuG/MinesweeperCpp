@@ -14,6 +14,7 @@ CMakeFiles/Saper.dir/MinesweeperBoard.cpp.o: ../MinesweeperBoard.cpp
 CMakeFiles/Saper.dir/MinesweeperBoard.cpp.o: ../MinesweeperBoard.h
 
 CMakeFiles/Saper.dir/main.cpp.o: ../GUI.h
+CMakeFiles/Saper.dir/main.cpp.o: ../GUIField.h
 CMakeFiles/Saper.dir/main.cpp.o: ../MinesweeperBoard.h
 CMakeFiles/Saper.dir/main.cpp.o: ../main.cpp
 

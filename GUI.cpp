@@ -11,7 +11,7 @@
 #include <iostream>
 
 GUI::GUI(MinesweeperBoard mainBoard)
-        : mainBoard(mainBoard) {
+        : mainBoard(mainBoard){
 
     preloadIcons();
 
@@ -42,6 +42,7 @@ GUI::GUI(MinesweeperBoard mainBoard)
             Mouse_Pressed = true;
             if (event.mouseButton.button == sf::Mouse::Left) {
 //
+                if(!mainBoard.isGameover())
                 for (int i = 0; i < fields.size(); i++) {
                     GUIField s = fields.at(i);
                     if (s.isClicked(event.mouseButton.x, event.mouseButton.y)) {
@@ -50,7 +51,7 @@ GUI::GUI(MinesweeperBoard mainBoard)
                             for (int j = 0; j < fields.size(); j++){
                                 fields.at(j).Update(mainBoard);
                             }
-                            // mouseUpdate = false;
+
                         }
                     }
                 }
@@ -59,8 +60,9 @@ GUI::GUI(MinesweeperBoard mainBoard)
             if (event.type == sf::Event::MouseButtonReleased) {
 
                 if (event.mouseButton.button == sf::Mouse::Right && Mouse_Pressed) {
-                    Mouse_Pressed = false;
 
+                    Mouse_Pressed = false;
+                    if(!mainBoard.isGameover())
                     for (int i = 0; i < fields.size(); i++) {
 
                         GUIField s = fields.at(i);
@@ -74,14 +76,8 @@ GUI::GUI(MinesweeperBoard mainBoard)
                 }
             }
 
-        if(event.type == sf::Event::Resized){
-
-
-        }
-
-
-        if (!mainBoard.isGameover()) {
             window.clear(sf::Color::Black);
+            sf::Sprite s;
             for (int i = 0; i < fields.size(); i++) {
                 GUIField s = fields.at(i);
                 sf::Image image;
@@ -99,10 +95,13 @@ GUI::GUI(MinesweeperBoard mainBoard)
 
                 window.draw(sprite);
             }
-            window.display();
+            window.draw(s);
+
             mainBoard.hasWon();
-            usleep(10000);
-        }else{
+
+
+
+        if (mainBoard.isGameover()) {
 
 
             sf::Font font;
@@ -118,23 +117,23 @@ GUI::GUI(MinesweeperBoard mainBoard)
                 textColor = sf::Color::Red;
                 str = "Game Over!";
             }
+
             sf::Text text(str, font);
             text.setFillColor(textColor);
             text.setCharacterSize(30);
             text.setPosition(window.getSize().x/2, window.getSize().y/2);
-
-// Draw it
             window.draw(text);
-            window.display();
-            usleep(10000);
         }
+
+        window.display();
+        usleep(10000);
     }
 
 
 }
 
 
-sf::Image GUI::loadTexture(char state) {
+sf::Image GUI::loadTexture(char state) const{
 
     sf::Image icon;
     switch (state) {
@@ -173,7 +172,7 @@ void GUI::preloadIcons() {
 
 }
 
-sf::Image GUI::getImage(char state) {
+sf::Image GUI::getImage(char state) const{
     for(Icon ico:textures){
             if(ico.type == state){
                 return ico.image;
@@ -183,3 +182,5 @@ sf::Image GUI::getImage(char state) {
     return loadTexture('?');
 
 }
+
+

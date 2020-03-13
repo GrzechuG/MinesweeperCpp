@@ -82,6 +82,7 @@ void MinesweeperBoard::reveal(int x, int y){
 
             }else {
                 gameOver = true;
+                revealAllMines();
             }
         }
         firstClick=false;
@@ -155,7 +156,7 @@ void MinesweeperBoard::NewGame() {
     }
 
     srand (time(NULL));
-    int minesToGenerate = (int)(0.02*width*height);
+    int minesToGenerate = (int)(0.05*width*height);
     for(int i = 0; i < minesToGenerate; i++){
 
         addNewMine();
@@ -206,7 +207,19 @@ bool MinesweeperBoard::hasWon() {
 
     if(unrevealedFields == minesCounter){
         gameOver = true;
+
         return true;
     }
     return false;
+}
+
+void MinesweeperBoard::revealAllMines() {
+    for(int y = 0; y<height; y++) {
+        for (int x = 0; x < width; x++) {
+            if(isMine(x,y)){
+                reveal(x,y);
+            }
+
+        }
+    }
 }
