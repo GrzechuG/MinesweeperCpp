@@ -106,7 +106,7 @@ bool MinesweeperBoard::isGameover() const {
 
 }
 
- MinesweeperBoard::MinesweeperBoard(int width, int height):width(width), height(height)
+ MinesweeperBoard::MinesweeperBoard(int width, int height, float bomb_percent):width(width), height(height), bomb_percent(bomb_percent)
 {
     NewGame();
 }
@@ -156,7 +156,7 @@ void MinesweeperBoard::NewGame() {
     }
 
     srand (time(NULL));
-    int minesToGenerate = (int)(0.05*width*height);
+    int minesToGenerate = (int)(bomb_percent*width*height);
     for(int i = 0; i < minesToGenerate; i++){
 
         addNewMine();

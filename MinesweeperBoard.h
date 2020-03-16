@@ -21,6 +21,7 @@ class MinesweeperBoard {
     bool firstClick = true;
     int minesCounter = 0;
     int unrevealedFields = 0;
+    float bomb_percent;
 
     int isMine(int x, int y) const;
     bool isCorrectField(int x, int y) const;
@@ -35,7 +36,7 @@ class MinesweeperBoard {
 
 public:
     char fieldType(int x, int y) const; //fordebug
-    MinesweeperBoard(int width, int height);
+    MinesweeperBoard(int width, int height, float bomb_percent);
     void NewGame();
     void reveal(int x, int y );
 

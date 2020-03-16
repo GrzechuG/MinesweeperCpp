@@ -16,7 +16,12 @@ GUI::GUI(MinesweeperBoard mainBoard)
     preloadIcons();
 
     bool Mouse_Pressed = false;
-    sf::RenderWindow window(sf::VideoMode(750, 750), "Minesweeper by Grzegorz Gajewski",sf::Style::Close);
+    //750 - 20
+    //750/20 = 37
+    sf::RenderWindow window(
+            sf::VideoMode(mainBoard.getSize().at(0)*37, mainBoard.getSize().at(1)*37),
+            "Minesweeper by Grzegorz Gajewski",
+            sf::Style::Close);
 
     std::vector <GUIField> fields;
     int fieldWidth =  window.getSize().x/mainBoard.getSize().at(0);
@@ -105,7 +110,7 @@ GUI::GUI(MinesweeperBoard mainBoard)
 
 
             sf::Font font;
-            font.loadFromFile("/home/samsepiol/CLionProjects/Minesweeper_Project/arial.ttf");
+            font.loadFromFile("./data/arial.ttf");
 
             sf::Color textColor;
             std::string str;
@@ -119,9 +124,17 @@ GUI::GUI(MinesweeperBoard mainBoard)
             }
 
             sf::Text text(str, font);
+            sf::RectangleShape rect1(sf::Vector2f(10,10));
+            rect1.setFillColor(sf::Color::Black);
+            text.setCharacterSize(80);
+            float textX = window.getSize().x/2-str.size()*20;
+            float textY = window.getSize().y/2;
+            rect1.setPosition(0, textY);
+            rect1.setSize(sf::Vector2f(window.getSize().x,80*1.5));
             text.setFillColor(textColor);
-            text.setCharacterSize(30);
-            text.setPosition(window.getSize().x/2, window.getSize().y/2);
+
+            text.setPosition(textX,textY);
+            window.draw(rect1);
             window.draw(text);
         }
 
@@ -138,20 +151,20 @@ sf::Image GUI::loadTexture(char state) const{
     sf::Image icon;
     switch (state) {
         case ' ':
-            icon.loadFromFile("./icons/0.png");
+            icon.loadFromFile("./data/0.png");
             break;
         case 'x':
-            icon.loadFromFile("./icons/bomb.png");
+            icon.loadFromFile("./data/bomb.png");
             break;
         case '#':
-            icon.loadFromFile("./icons/undiscovered.png");
+            icon.loadFromFile("./data/undiscovered.png");
             break;
         case 'F':
-            icon.loadFromFile("./icons/flag.png");
+            icon.loadFromFile("./data/flag.png");
             break;
 
         default:
-            icon.loadFromFile(std::string("./icons/")+state+std::string(".png"));//Todelete
+            icon.loadFromFile(std::string("./data/")+state+std::string(".png"));//Todelete
     }
     return icon;
 
