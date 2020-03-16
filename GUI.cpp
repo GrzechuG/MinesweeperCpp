@@ -10,7 +10,7 @@
 #ifndef __unix__
     #include <zconf.h>
 #elif defined(_WIN32) || defined(WIN32)
-    #inlcude <Windows.h>
+    #inlcude <windows.h>
 #endif
 
 #include <iostream>
@@ -145,9 +145,9 @@ GUI::GUI(MinesweeperBoard mainBoard)
 
         window.display();
         #ifndef __unix__
-            usleep(10000);
+            usleep(100000);
         #elif defined(_WIN32) || defined(WIN32)
-            Sleep(100);
+            Sleep(1);
         #endif
 
 
