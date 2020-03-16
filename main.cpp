@@ -6,6 +6,6 @@ int main() {
     board.debug_display();
     //board.console_display();
     GUI gameWindow(board);
-    
+
     return 0;
 }

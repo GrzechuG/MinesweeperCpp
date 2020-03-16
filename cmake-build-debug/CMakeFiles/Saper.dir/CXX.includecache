@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/samsepiol/CLionProjects/Minesweeper_Project/GUI.cpp
+GUI.h
+/home/samsepiol/CLionProjects/Minesweeper_Project/GUI.h
+MinesweeperBoard.h
+/home/samsepiol/CLionProjects/Minesweeper_Project/MinesweeperBoard.h
+GUIField.h
+/home/samsepiol/CLionProjects/Minesweeper_Project/GUIField.h
+SFML/Graphics.hpp
+-
+vector
+-
+zconf.h
+-
+iostream
+-
+
 /home/samsepiol/CLionProjects/Minesweeper_Project/GUI.h
 SFML/Graphics/Texture.hpp
 -
@@ -29,12 +45,4 @@ MinesweeperBoard.h
 /home/samsepiol/CLionProjects/Minesweeper_Project/MinesweeperBoard.h
 vector
 -
-
-/home/samsepiol/CLionProjects/Minesweeper_Project/main.cpp
-iostream
--
-MinesweeperBoard.h
-/home/samsepiol/CLionProjects/Minesweeper_Project/MinesweeperBoard.h
-GUI.h
-/home/samsepiol/CLionProjects/Minesweeper_Project/GUI.h
 

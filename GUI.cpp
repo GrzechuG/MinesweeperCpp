@@ -7,7 +7,12 @@
 #include "GUIField.h"
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <zconf.h>
+#ifndef __unix__
+    #include <zconf.h>
+#elif defined(_WIN32) || defined(WIN32)
+    #inlcude <Windows.h>
+#endif
+
 #include <iostream>
 
 GUI::GUI(MinesweeperBoard mainBoard)
@@ -139,7 +144,13 @@ GUI::GUI(MinesweeperBoard mainBoard)
         }
 
         window.display();
-        usleep(10000);
+        #ifndef __unix__
+            usleep(10000);
+        #elif defined(_WIN32) || defined(WIN32)
+            Sleep(100);
+        #endif
+
+
     }
 
 
